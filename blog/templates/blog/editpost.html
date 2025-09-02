@@ -1,0 +1,31 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'blog/css/editpost.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="create-post">
+    <h1>Edit Blog Post</h1>
+    <form class="post-form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        <label for="{{ form.title.id_for_label }}">Title</label>
+        {{ form.title }}
+        <!-- <input type="text" id="title" name="title" required /> -->
+
+        <label for="{{ form.content.id_for_label }}">Post Content</label>
+        {{ form.content }}
+        <!-- <textarea id="content" name="content" rows="10" required></textarea> -->
+
+        <label for="{{ form.image.id_for_label }}">Upload Image</label>
+        {{ form.image }}
+        <!-- <input type="file" id="image" name="image" accept="image/*" /> -->
+
+        <button type="submit" class="submit-btn">Update Post</button>
+    </form>
+</main>
+{% endblock %}
+

@@ -1,0 +1,77 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GC Blogger</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Static CSS -->
+    <link rel="stylesheet" href="{% static 'blog/css/base.css' %}">
+    {% block stylesheet %}{% endblock %}
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="{% url 'blogapp:home' %}">
+                <img src="{% static 'blog/images/logo.png' %}" alt="GC Blogger logo" loading="lazy">
+            </a>
+        </div>
+        <button class="menu-icon" id="menu-icon" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <nav class="overlay-menu" id="overlay-menu">
+        <div class="overlay-content">
+            <a href="{% url 'blogapp:home' %}">Home</a>
+            <a href="{% url 'blogapp:blogs' %}">Explore Blogs</a>
+            <a href="{% url 'blogapp:contact' %}">Contact Us</a>
+            <a href="{% url 'blogapp:about' %}">About Us</a>
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'blogapp:myposts' %}">My Post</a>
+            <a href="{% url 'blogapp:createpost' %}">Create Post</a>
+            <a href="{% url 'blogapp:profile' %}">Profile</a>
+            <a href="{% url 'blogapp:logout'  %}?next={{ request.path }}">Logout</a>
+            {% else %}
+            <a href="{% url 'blogapp:auth' %}">Sign In</a>
+            {% endif %}
+
+            <button class="close-button" id="close-button">Close</button>
+        </div>
+    </nav>
+
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-dismissible 
+        {% if message.tags == 'success' %}alert-success
+        {% elif message.tags == 'warning' %}alert-warning
+        {% elif message.tags == 'error' %}alert-danger
+        {% else %}alert-info{% endif %}">
+        <button class="close-alert" onclick="this.parentElement.style.display='none';">×</button>
+        <span class="alert-icon">{{ message.message }}</span>
+        </div>
+    {% endfor %}
+    {% endif %}
+
+
+    {% block content %}
+    {% endblock %}
+
+    <footer>
+        &copy; 2025 GC Blogger. Built with ❤️ by Gokul.
+    </footer>
+
+    <!-- Static JS -->
+    <script src="{% static 'blog/js/header.js' %}"></script>
+    {% block js %}
+    {% endblock %}
+</body>
+</html>

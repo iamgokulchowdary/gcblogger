@@ -1,0 +1,45 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'blog/css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="profile-page">
+    <h1>Edit Your Profile</h1>
+    <form class="profile-form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="profile-pic-container">
+            {% if user.avatar %}
+                <img src="{{ user.avatar.url }}" alt="Profile Picture" class="profile-pic" id="profilePreview" />
+            {% else %}
+                <img src="{% static 'blog/images/avatar.png' %}" alt="Default Profile Picture" class="profile-pic" id="profilePreview" />
+            {% endif %}
+            <div class="file-upload-wrapper">
+                <input type="file" id="profileImage" name="profileImage" accept="image/*" />
+            </div>
+        </div>
+
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" value="{{ user.name }}" required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" value="{{ user.email }}" required />
+
+        <label for="bio">Bio</label>
+        <textarea id="bio" name="bio" rows="5">{{ user.bio }}</textarea>
+
+        <hr />
+
+        <a href="{% url 'blogapp:changepassword' %}" class="change-password-link">Change Password</a>
+
+        <button type="submit" class="update-btn">Update Profile</button>
+    </form>
+</main>
+
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'blog/js/updateProfileImage.js' %}"></script>
+{% endblock %}

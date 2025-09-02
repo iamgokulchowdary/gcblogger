@@ -1,0 +1,177 @@
+@import url(base.css);
+
+.search-form {
+  width: 100%;
+  max-width: 64rem;
+  margin: 2rem auto 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.search-form input[type="text"] {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--grey);
+  border-radius: 0.25rem;
+  font-size: 1rem;
+}
+
+.search-form button {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-form button:hover {
+  background-color: var(--secondary-color);
+}
+
+
+
+.add-post-wrapper {
+  text-align: right;
+  margin: 1rem 0 2rem 0;
+}
+
+.add-post-btn {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease;
+}
+
+.add-post-btn:hover {
+  background-color: var(--secondary-color);
+}
+
+
+
+/* My Posts Page Layout */
+.my-posts-page {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  width: 100%;
+  background-color: var(--white);
+  color: var(--black);
+}
+
+/* Page Heading */
+.my-posts-page h1 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Individual Post Card */
+.post-card {
+  padding: 2rem;
+  border-radius: 0.5rem;
+  background-color: var(--grey);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Post Title */
+.post-title {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+/* Post Preview */
+.post-preview {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--black);
+  max-height: 12rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Post Actions */
+.post-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Edit Button */
+.edit-btn, .view-btn {
+  background-color: var(--secondary-color);
+  color: var(--white);
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.edit-btn:hover, .view-btn:hover{
+  background-color: var(--primary-color);
+}
+
+/* Delete Button */
+.delete-btn {
+  background-color: var(--alert-red);
+  color: var(--white);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: var(--alert-red);
+}
+
+/* Responsive Tweaks */
+@media (max-width: 48rem) {
+  .my-posts-page {
+    padding: 2rem 1rem;
+  }
+
+  .post-preview {
+    max-height: none;
+  }
+
+  .add-post-wrapper {
+    text-align: center;
+  }
+}
+
+@media (max-width: 48rem) {
+  .search-form {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 1rem;
+  }
+
+  .search-form input[type="text"],
+  .search-form button {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .search-form button {
+    margin-top: 0.5rem;
+  }
+}

@@ -1,0 +1,78 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'blog/css/signin.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="auth-page">
+    <div class="auth-tabs">
+        <button class="tab-btn active" onclick="showForm('signup')">Sign Up</button>
+        <button class="tab-btn" onclick="showForm('signin')">Sign In</button>
+    </div>
+
+    <form id="signupForm" class="auth-form" method="post">
+        {% csrf_token %}
+        <h2>Create Account</h2>
+
+        <input type="hidden" name="signup" value="true">
+
+        <label for="signupName">Name</label>
+        {{ signupform.name }}
+
+        <label for="signupEmail">Email</label>
+        {{ signupform.email }}
+
+        <label for="signupPassword">Password</label>
+        {{ signupform.password }}
+
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+
+        <button type="submit" class="auth-btn">Sign Up</button>
+    </form>
+
+    <form id="signinForm" class="auth-form hidden" method="post">
+        {% csrf_token %}
+        <h2>Welcome Back</h2>
+
+        <input type="hidden" name="signin" value="true">
+
+        <label for="signinEmail">Email</label>
+        {{ signinform.email }}
+
+        <label for="signinPassword">Password</label>
+        {{ signinform.password }}
+
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+
+        <button type="submit" class="auth-btn">Sign In</button>
+    </form>
+
+</main>
+
+{% if show_signin %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        showForm('signin');
+    });
+</script>
+{% else %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        showForm('signup');
+    });
+</script>
+{% endif %}
+
+
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'blog/js/signin.js' %}"></script>
+{% endblock %}
+

@@ -1,0 +1,58 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="blog-page">
+    <article class="blog-post-full">
+        <h1 class="blog-title">{{ post.title }}</h1>
+        <div class="blog-meta">
+            <span class="author">By {{ post.author.name }}</span>
+            <span class="date">{{ post.created_at|date:"F j, Y" }}</span>
+        </div>
+
+        {% if post.image %}
+        <img src="{{ post.image.url }}" alt="Blog Image" class="blog-image" />
+        {% else %}
+        <img src="{% static 'blog/images/blogpost.svg' %}" alt="Blog Image" class="blog-image" />
+        {% endif %}
+
+        <div class="blog-content">
+            <p>
+                {{ post.content|linebreaks }}
+            </p>
+        </div>
+    </article>
+
+    <section class="comments-section">
+        <h2>Comments</h2>
+
+        {% if user.is_authenticated %}
+        <form method="post" class="comment-form">
+            {% csrf_token %}
+            <label for="comment">Your Comment</label>
+            <textarea id="comment" name="comment" rows="4" required></textarea>
+            <button type="submit" class="comment-btn">Post Comment</button>
+        </form>
+        {% else %}
+        <p>Please <a href="{% url 'blogapp:auth' %}">log in</a> to post a comment.</p>
+        {% endif %}
+
+        <div class="comment-list">
+            {% for comment in comments %}
+                <div class="comment">
+                    <p class="comment-author">{{ comment.author.name }}</p>
+                    <p class="comment-text">{{ comment.content }}</p>
+                    <!-- <p class="comment-date">{{ comment.created_at|date:"F j, Y, g:i a" }}</p> -->
+                </div>
+            {% empty %}
+                <p>No comments yet. Be the first to share your thoughts!</p>
+            {% endfor %}
+            <!-- More comments can be added dynamically -->
+        </div>
+    </section>
+</main>
+{% endblock %}

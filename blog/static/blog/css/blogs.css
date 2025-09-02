@@ -1,0 +1,121 @@
+@import url(base.css);
+
+
+.search-form {
+  width: 100%;
+  max-width: 64rem;
+  margin: 2rem auto 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.search-form input[type="text"] {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--grey);
+  border-radius: 0.25rem;
+  font-size: 1rem;
+}
+
+.search-form button {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-form button:hover {
+  background-color: var(--secondary-color);
+}
+
+
+/* Blog Section Layout */
+.blog-section {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  background-color: var(--white);
+  color: var(--black);
+}
+
+/* Individual Blog Post */
+.blog-post {
+  padding: 2rem;
+  border-radius: 0.5rem;
+  background-color: var(--grey);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Post Title */
+.post-title {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+/* Post Content */
+.post-content {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--black);
+}
+
+/* Read More Link */
+.read-more {
+  align-self: flex-start;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--secondary-color);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease;
+}
+
+.read-more:hover {
+  background-color: var(--secondary-color);
+  color: var(--white);
+}
+
+/* Responsive Layout */
+@media (min-width: 48rem) {
+
+  .blog-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 64rem) {
+  .blog-section {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 48rem) {
+  .search-form {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 1rem;
+  }
+
+  .search-form input[type="text"],
+  .search-form button {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .search-form button {
+    margin-top: 0.5rem;
+  }
+}

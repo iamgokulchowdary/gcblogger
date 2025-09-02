@@ -1,0 +1,120 @@
+@import url(base.css);
+
+/* Contact Page Layout */
+.contact-page {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  background-color: var(--white);
+  color: var(--black);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Heading and Intro */
+.contact-page h1 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.contact-page p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--black);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Contact Form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-form label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--black);
+  margin-bottom: 0.5rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.75rem 1rem;
+  border: 0.0625rem solid var(--dark-grey);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 0.125rem solid var(--secondary-color);
+  outline-offset: 0.25rem;
+}
+
+/* Submit Button */
+.contact-btn {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-btn:hover {
+  background-color: var(--dark-grey);
+}
+
+/* Contact Info Section */
+.contact-info {
+  margin-top: 2rem;
+  padding: 2rem;
+  background-color: var(--grey);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.contact-info h2 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.contact-info p {
+  color: var(--black);
+  font-size: large;
+}
+
+.contact-info a {
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 48rem) {
+  .contact-page {
+    padding: 2rem 1rem;
+  }
+
+  .contact-page h1 {
+    font-size: 2rem;
+  }
+
+  .contact-info {
+    padding: 1.5rem;
+  }
+}

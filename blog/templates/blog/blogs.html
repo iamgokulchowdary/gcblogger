@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'blog/css/blogs.css' %}">
+{% endblock %}
+
+{% block content %}
+<form method="GET" action="{% url 'blogapp:blogs' %}" class="search-form">
+    <input type="text" name="q" placeholder="Search blogs..." value="{{ query }}">
+    <button type="submit">Search</button>
+</form>
+
+<main class="blog-section">
+    {% for post in posts %}
+    <div class="blog-post">
+      <h2 class="post-title">{{ post.title }}</h2>
+      <p class="post-content">
+        {{ post.content|truncatewords:30 }}
+      </p>
+      <a href="{% url 'blogapp:blog' post.slug %}" class="read-more">Read More</a>
+    </div>
+    {% empty %}
+    <p>No blog posts available yet.</p>
+    {% endfor %}
+</main>
+{% endblock %}

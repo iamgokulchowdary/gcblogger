@@ -1,0 +1,96 @@
+@import url(base.css);
+
+
+main {
+    width: 100%;
+}
+
+
+/* Create Post Section */
+.create-post {
+  max-width: 64rem; 
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  background-color: var(--white);
+  color: var(--black);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Heading */
+.create-post h1 {
+  font-size: 2.75rem;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Form Layout */
+.post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Labels */
+.post-form label {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--black);
+}
+
+/* Inputs & Textarea */
+.post-form input[type="text"],
+.post-form textarea,
+.post-form input[type="file"] {
+  padding: 0.75rem 1rem;
+  border: 0.0625rem solid var(--dark-grey);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background-color: var(--white);
+  color: var(--black);
+  width: 100%;
+}
+
+.post-form textarea {
+  resize: vertical;
+  line-height: 1.75;
+}
+
+/* Focus Styles */
+.post-form input:focus,
+.post-form textarea:focus {
+  outline: 0.125rem solid var(--secondary-color);
+  outline-offset: 0.25rem;
+}
+
+/* Submit Button */
+.submit-btn {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: center;
+}
+
+.submit-btn:hover {
+  background-color: var(--dark-grey);
+}
+
+/* Responsive Tweaks */
+@media (max-width: 48rem) {
+  .create-post {
+    padding: 2rem 1rem;
+    max-width: 100%;
+  }
+
+  .create-post h1 {
+    font-size: 2rem;
+  }
+}

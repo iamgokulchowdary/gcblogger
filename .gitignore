@@ -1,0 +1,17 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.log
+
+# Django-specific
+*.sqlite3
+/media/
+migrations/
+
+# Virtual environments
+.venv/
+venv/
+
+# OS-specific
+.DS_Store
+Thumbs.db

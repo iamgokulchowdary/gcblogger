@@ -1,0 +1,40 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'blog/css/myposts.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<form method="GET" action="{% url 'blogapp:myposts' %}" class="search-form">
+    <input type="text" name="q" placeholder="Search blogs..." value="{{ query }}">
+    <button type="submit">Search</button>
+</form>
+
+<main class="my-posts-page">
+  <h1>My Blog Posts</h1>
+
+  <div class="add-post-wrapper">
+    <a href="{% url 'blogapp:createpost' %}" class="add-post-btn">+ Add New</a>
+  </div>
+
+  {% for post in posts %}
+    <div class="post-card">
+      <h2 class="post-title">{{ post.title }}</h2>
+      <p class="post-preview">{{ post.content|truncatewords:40 }}</p>
+      <div class="post-actions">
+        <a href="{% url 'blogapp:blog' post.slug %}" class="view-btn">view</a>
+        <a href="{% url 'blogapp:editpost' post.slug %}" class="edit-btn">Edit</a>
+        <form method="POST" action="{% url 'blogapp:deletepost' post.slug %}" style="display:inline;">
+          {% csrf_token %}
+          <button type="submit" class="delete-btn">Delete</button>
+        </form>
+      </div>
+    </div>
+  {% empty %}
+    <p>You haven't posted anything yet.</p>
+  {% endfor %}
+</main>
+{% endblock %}
+

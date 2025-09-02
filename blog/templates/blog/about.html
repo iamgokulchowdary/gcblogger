@@ -1,0 +1,42 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'blog/css/about.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="about-page">
+    <section class="about-intro">
+        <h1>About Us</h1>
+        <p>
+            Welcome to <strong>MyBlog</strong> — a space where ideas, stories, and creativity come to life. Whether you're here to read, write, or simply explore, we're thrilled to have you.
+        </p>
+    </section>
+
+    <section class="founder-section">
+        <img src="{% static 'blog/images/founder.jpg' %}" alt="Founder Photo" class="founder-photo" />
+        <h2>Meet the Founder</h2>
+        <p>
+            <strong>Patcha Gokul Chowdary</strong>, the visionary behind MyBlog, is a passionate developer and writer based in Hyderabad, India. With a background in web development and a love for storytelling, Gokul created this platform to empower everyday voices and foster a vibrant blogging community.
+        </p>
+    </section>
+
+    <section class="mission-section">
+        <h2>Our Mission</h2>
+        <p>
+            We believe everyone has a story worth sharing. MyBlog is designed to be simple, elegant, and inclusive — a place where writers of all levels can publish their thoughts and connect with readers around the world.
+        </p>
+    </section>
+
+    <section class="tech-section">
+        <h2>Built With Passion</h2>
+        <p>
+            This website is handcrafted using HTML, CSS, and a sprinkle of JavaScript — with responsiveness and accessibility at its core. Every page is designed to be fast, intuitive, and beautiful across devices.
+        </p>
+    </section>
+</main>
+{% endblock %}
+
+  
+
